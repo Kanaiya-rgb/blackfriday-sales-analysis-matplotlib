@@ -69,39 +69,40 @@ with col4:
                       labels={'Product_Category_1': 'Product Category'})
     st.plotly_chart(fig4, use_container_width=True)
 
-# --- Plot 5: Top 10 Occupations by Spending ---
-# --- Plot 5: Top 10 Occupations by Spending (Matplotlib Style) ---
+# --- Plot 5: Top 10 Occupations by Spending (Guaranteed Sort) ---
 with col5:
-    # Data ko ascending order mein sort karein taaki horizontal bar chart mein top par sabse bada value aaye
+    st.subheader('Top 10 Occupations by Spending')
+    
+    # Get the top 10 occupations
     occupation_amount = (
         df.groupby('Occupation')['Purchase']
           .sum()
-          .sort_values(ascending=True) # Sort ascending for barh
-          .nlargest(10) # Get top 10
-    ).reset_index()
-
-    # Occupation ko string banayein taaki ajeeb sorting na ho
+          .nlargest(10)
+          .reset_index()
+    )
+    
+    # Convert 'Occupation' to a string for plotting
     occupation_amount['Occupation'] = occupation_amount['Occupation'].astype(str)
 
+    # Sort the dataframe by Purchase amount in descending order for the plot
+    occupation_amount = occupation_amount.sort_values(by='Purchase', ascending=False)
+    
     fig5 = px.bar(occupation_amount,
                   x='Purchase',
                   y='Occupation',
                   orientation='h',
-                  title='Top 10 Occupations By Spending')
+                  title="Top 10 Occupations by Spending")
 
-    # Matplotlib jaisa look: teal color, black border
-    fig5.update_traces(marker_color='teal', marker_line=dict(color='black', width=1.5))
-
-    # Y-axis ko total purchase ke hisaab se order karein (highest at top)
+    # This ensures the y-axis order is exactly like our sorted dataframe
     fig5.update_layout(
-        yaxis={'categoryorder': 'total ascending'},
-        xaxis_title='Total Purchase Amount',
-        yaxis_title='Occupation',
-        xaxis_gridcolor='lightgrey', # Grid lines
-        xaxis_gridwidth=1
+        yaxis=dict(
+            categoryorder='array', 
+            categoryarray=occupation_amount['Occupation']
+        )
     )
-    st.plotly_chart(fig5, use_container_width=True)
     
+    st.plotly_chart(fig5, use_container_width=True)
+
 # --- Plot 6: Purchase by City Category ---
 with col6:
     st.subheader('Purchase by City Category')
