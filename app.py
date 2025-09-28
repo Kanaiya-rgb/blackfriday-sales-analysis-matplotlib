@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
+import plotly.express as px  # Import Plotly Express
 
 # --- Page Configuration ---
 st.set_page_config(
@@ -20,7 +20,7 @@ def load_data():
     return df
 
 # --- Main Application ---
-st.title('🛍️ Black Friday Sales Analysis')
+st.title('🛍️ Interactive Black Friday Sales Analysis')
 
 # Load data
 df = load_data()
@@ -34,73 +34,54 @@ st.markdown("---")
 st.header('Comprehensive Sales Analysis')
 
 # --- NEW LAYOUT: Using Streamlit Columns ---
-# Create two rows of three columns each
 col1, col2, col3 = st.columns(3)
 col4, col5, col6 = st.columns(3)
-
 
 # --- Plot 1: Male vs Female shoppers ---
 with col1:
     st.subheader('Male vs Female Shoppers')
-    gender_counts = df['Gender'].value_counts()
-    fig1, ax1 = plt.subplots(figsize=(6, 5))
-    ax1.bar(gender_counts.index, gender_counts.values, color=['#1f77b4', '#ff7f0e'])
-    ax1.set_xlabel('Gender')
-    ax1.set_ylabel('Count')
-    st.pyplot(fig1)
+    gender_counts = df['Gender'].value_counts().reset_index()
+    gender_counts.columns = ['Gender', 'Count']
+    fig1 = px.bar(gender_counts, x='Gender', y='Count', color='Gender',
+                  color_discrete_map={'M': '#1f77b4', 'F': '#ff7f0e'})
+    st.plotly_chart(fig1, use_container_width=True)
 
 # --- Plot 2: Age group percentage ---
 with col2:
     st.subheader('Age Group Percentage')
-    age_counts = df['Age'].value_counts()
-    fig2, ax2 = plt.subplots(figsize=(6, 5))
-    ax2.pie(age_counts.values, labels=age_counts.index, autopct='%1.1f%%', startangle=90)
-    ax2.axis('equal')
-    st.pyplot(fig2)
+    age_counts = df['Age'].value_counts().reset_index()
+    age_counts.columns = ['Age', 'Count']
+    fig2 = px.pie(age_counts, names='Age', values='Count')
+    st.plotly_chart(fig2, use_container_width=True)
 
 # --- Plot 3: Purchase Amount Distribution ---
 with col3:
     st.subheader('Purchase Distribution')
-    fig3, ax3 = plt.subplots(figsize=(6, 5))
-    ax3.hist(df['Purchase'], bins=30, color='purple', edgecolor='black')
-    ax3.set_xlabel('Amount')
-    ax3.set_ylabel('Transactions')
-    st.pyplot(fig3)
+    fig3 = px.histogram(df, x='Purchase', nbins=30)
+    fig3.update_layout(bargap=0.1)
+    st.plotly_chart(fig3, use_container_width=True)
 
-# --- Plot 4: Product Category vs Avg Purchase ---
+# --- Plot 4: Avg Purchase by Category ---
 with col4:
     st.subheader('Avg Purchase by Category')
-    product_purchase = df.groupby('Product_Category_1')['Purchase'].mean()
-    fig4, ax4 = plt.subplots(figsize=(6, 5))
-    ax4.scatter(product_purchase.index, product_purchase.values, color='red', alpha=0.7)
-    ax4.set_xlabel('Product Category')
-    ax4.set_ylabel('Avg Purchase Amount')
-    ax4.grid(True, linestyle='--', alpha=0.6)
-    st.pyplot(fig4)
+    product_purchase = df.groupby('Product_Category_1')['Purchase'].mean().reset_index()
+    fig4 = px.scatter(product_purchase, x='Product_Category_1', y='Purchase',
+                      labels={'Product_Category_1': 'Product Category'})
+    st.plotly_chart(fig4, use_container_width=True)
 
-# --- Plot 5: Top Occupation by Amount Spent ---
+# --- Plot 5: Top 10 Occupations by Spending ---
 with col5:
     st.subheader('Top 10 Occupations')
-    occupation_amount = (
-        df.groupby('Occupation')['Purchase']
-          .sum()
-          .sort_values(ascending=True)
-          .tail(10)
-    )
-    fig5, ax5 = plt.subplots(figsize=(6, 5))
-    ax5.barh(occupation_amount.index.astype(str), occupation_amount.values, color='teal')
-    ax5.set_xlabel('Total Purchase')
-    ax5.set_ylabel('Occupation')
-    st.pyplot(fig5)
+    occupation_amount = df.groupby('Occupation')['Purchase'].sum().nlargest(10).reset_index()
+    fig5 = px.bar(occupation_amount, x='Purchase', y='Occupation', orientation='h')
+    fig5.update_layout(yaxis={'categoryorder':'total ascending'})
+    st.plotly_chart(fig5, use_container_width=True)
 
-# --- Plot 6: City Category Wise Total Purchase ---
+# --- Plot 6: Purchase by City Category ---
 with col6:
     st.subheader('Purchase by City Category')
-    city_purchase = df.groupby('City_Category')['Purchase'].sum()
+    city_purchase = df.groupby('City_Category')['Purchase'].sum().reset_index()
     city_labels = {'A': 'Tier 1', 'B': 'Tier 2', 'C': 'Tier 3'}
-    city_purchase.index = city_purchase.index.map(city_labels)
-    fig6, ax6 = plt.subplots(figsize=(6, 5))
-    ax6.bar(city_purchase.index, city_purchase.values, color=['gold', 'lightgreen', 'lightcoral'])
-    ax6.set_xlabel('City Category')
-    ax6.set_ylabel('Total Purchase')
-    st.pyplot(fig6)
+    city_purchase['City_Category'] = city_purchase['City_Category'].map(city_labels)
+    fig6 = px.bar(city_purchase, x='City_Category', y='Purchase', color='City_Category')
+    st.plotly_chart(fig6, use_container_width=True)
