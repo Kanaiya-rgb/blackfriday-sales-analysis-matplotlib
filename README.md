@@ -78,6 +78,10 @@ The script generates a high-resolution dashboard image (dashboard_blackfriday.pn
 - **Layout:** 2 rows × 3 columns grid
 - **Format:** PNG with professional styling
 
+## 🔍 Preview
+
+![Black Friday Sales Dashboard](dashboard_blackfriday.png)
+
 ## 💡 Key Insights
 
 The dashboard shows:
