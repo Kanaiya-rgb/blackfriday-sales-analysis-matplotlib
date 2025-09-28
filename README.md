@@ -7,11 +7,11 @@
 
 A simple data visualization dashboard for Black Friday sales analysis using Python and Matplotlib.
 
-##  Overview
+## 📋 Overview
 
 This project analyzes Black Friday retail data and creates a dashboard with 6 different charts to show business insights.
 
-##  Features
+## 📊 Features
 
 The dashboard includes:
 
@@ -22,63 +22,63 @@ The dashboard includes:
 5. **Top Occupations by Spending** - Horizontal bar chart of highest spending occupations
 6. **City Category Analysis** - Bar chart showing total purchases by city tier
 
-##  Dataset
+## 📁 Dataset
 
 - **Source:** [Kaggle - Black Friday Sales Dataset](https://www.kaggle.com/datasets/rajeshrampure/black-friday-sale)
 - **File:** BlackFriday.csv
 - **Size:** ~550,000 records
 - **Columns:** 12 features (User_ID, Product_ID, Gender, Age, Occupation, City_Category, etc.)
 
-##  Installation
+## 🚀 Installation
 
-`ash
+```bash
 pip install pandas matplotlib numpy
-`
+```
 
-##  Quick Start
+## ⚡ Quick Start
 
 1. **Clone the repository:**
-`ash
+```bash
 git clone https://github.com/Kanaiya-rgb/blackfriday-sales-analysis-matplotlib.git
 cd blackfriday-sales-analysis-matplotlib
-`
+```
 
 2. **Install dependencies:**
-`ash
+```bash
 pip install pandas matplotlib numpy
-`
+```
 
 3. **Download the dataset:**
    - Download BlackFriday.csv from [Kaggle](https://www.kaggle.com/datasets/rajeshrampure/black-friday-sale)
    - Place it in the project root directory
 
 4. **Run the analysis:**
-`ash
+```bash
 python BlackFriday.ipynb
-`
+```
 
 > **Note:** Despite the .ipynb extension, this is a Python script that can be run directly
 
-##  Project Structure
+## 📂 Project Structure
 
-`
+```
 blackfriday-sales-analysis-matplotlib/
- BlackFriday.ipynb          # Main analysis script
- BlackFriday.csv            # Dataset (download from Kaggle)
- dashboard_blackfriday.png  # Generated dashboard image
- .gitignore
- LICENSE
- README.md
-`
+├── BlackFriday.ipynb          # Main analysis script
+├── BlackFriday.csv            # Dataset (download from Kaggle)
+├── dashboard_blackfriday.png  # Generated dashboard image
+├── .gitignore
+├── LICENSE
+└── README.md
+```
 
-##  Dashboard Output
+## 🖼️ Dashboard Output
 
 The script generates a high-resolution dashboard image (dashboard_blackfriday.png) with:
-- **Size:** 2012 inches at 150 DPI
-- **Layout:** 2 rows  3 columns grid
+- **Size:** 20×12 inches at 150 DPI
+- **Layout:** 2 rows × 3 columns grid
 - **Format:** PNG with professional styling
 
-##  Key Insights
+## 💡 Key Insights
 
 The dashboard shows:
 - Customer demographics (gender, age, occupation)
@@ -86,14 +86,14 @@ The dashboard shows:
 - Product category performance
 - Geographic distribution across city tiers
 
-##  Code Features
+## 🔧 Code Features
 
 - **Data Cleaning:** Automatic handling of missing values
 - **Professional Visualization:** High-quality plots with proper styling
 - **Export Functionality:** Saves dashboard as PNG image
 - **Customizable:** Easy to modify colors, styles, and dimensions
 
-##  Customization
+## 🛠️ Customization
 
 You can easily modify the code to:
 - Change chart colors and styles
@@ -101,7 +101,7 @@ You can easily modify the code to:
 - Add more analysis dimensions
 - Export in different formats (PDF, SVG, etc.)
 
-##  Contributing
+## 🤝 Contributing
 
 Contributions are welcome! Feel free to:
 - Add new visualization types
@@ -109,11 +109,11 @@ Contributions are welcome! Feel free to:
 - Add statistical analysis
 - Submit bug fixes
 
-##  License
+## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-##  Contact
+## 📞 Contact
 
 - **Repository:** [GitHub Repository](https://github.com/Kanaiya-rgb/blackfriday-sales-analysis-matplotlib)
 - **Author:** Kanaiya-rgb
