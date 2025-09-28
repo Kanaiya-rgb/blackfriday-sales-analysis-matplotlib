@@ -82,7 +82,7 @@ The script generates a high-resolution dashboard image (dashboard_blackfriday.pn
 
 Here's a preview of the interactive Streamlit dashboard:
 
-![Streamlit Interactive Dashboard](https://i.imgur.com/r6O5kU6.png)
+![Streamlit Interactive Dashboard](https://github.com/Kanaiya-rgb/blackfriday-sales-analysis-matplotlib/blob/9390c194813e88dbd005c19700f871b43179a7e5/dashboard_blackfriday.png)
 
 ## 💡 Key Insights
 
