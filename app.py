@@ -70,23 +70,38 @@ with col4:
     st.plotly_chart(fig4, use_container_width=True)
 
 # --- Plot 5: Top 10 Occupations by Spending ---
-# NEW CORRECTED CODE
+# --- Plot 5: Top 10 Occupations by Spending (Matplotlib Style) ---
 with col5:
-    st.subheader('Top 10 Occupations by Spending')
-    occupation_amount = df.groupby('Occupation')['Purchase'].sum().nlargest(10).reset_index()
-    
-    # Convert 'Occupation' to string to ensure correct sorting
-    occupation_amount['Occupation'] = occupation_amount['Occupation'].astype(str) 
-    
-    fig5 = px.bar(occupation_amount, 
-                  x='Purchase', 
-                  y='Occupation', 
-                  orientation='h',
-                  title="Top 10 Occupations by Spending"
-                 )
-    fig5.update_layout(yaxis={'categoryorder':'total ascending'})
-    st.plotly_chart(fig5, use_container_width=True)
+    # Data ko ascending order mein sort karein taaki horizontal bar chart mein top par sabse bada value aaye
+    occupation_amount = (
+        df.groupby('Occupation')['Purchase']
+          .sum()
+          .sort_values(ascending=True) # Sort ascending for barh
+          .nlargest(10) # Get top 10
+    ).reset_index()
 
+    # Occupation ko string banayein taaki ajeeb sorting na ho
+    occupation_amount['Occupation'] = occupation_amount['Occupation'].astype(str)
+
+    fig5 = px.bar(occupation_amount,
+                  x='Purchase',
+                  y='Occupation',
+                  orientation='h',
+                  title='Top 10 Occupations By Spending')
+
+    # Matplotlib jaisa look: teal color, black border
+    fig5.update_traces(marker_color='teal', marker_line=dict(color='black', width=1.5))
+
+    # Y-axis ko total purchase ke hisaab se order karein (highest at top)
+    fig5.update_layout(
+        yaxis={'categoryorder': 'total ascending'},
+        xaxis_title='Total Purchase Amount',
+        yaxis_title='Occupation',
+        xaxis_gridcolor='lightgrey', # Grid lines
+        xaxis_gridwidth=1
+    )
+    st.plotly_chart(fig5, use_container_width=True)
+    
 # --- Plot 6: Purchase by City Category ---
 with col6:
     st.subheader('Purchase by City Category')
