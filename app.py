@@ -70,10 +70,20 @@ with col4:
     st.plotly_chart(fig4, use_container_width=True)
 
 # --- Plot 5: Top 10 Occupations by Spending ---
+# NEW CORRECTED CODE
 with col5:
-    st.subheader('Top 10 Occupations')
+    st.subheader('Top 10 Occupations by Spending')
     occupation_amount = df.groupby('Occupation')['Purchase'].sum().nlargest(10).reset_index()
-    fig5 = px.bar(occupation_amount, x='Purchase', y='Occupation', orientation='h')
+    
+    # Convert 'Occupation' to string to ensure correct sorting
+    occupation_amount['Occupation'] = occupation_amount['Occupation'].astype(str) 
+    
+    fig5 = px.bar(occupation_amount, 
+                  x='Purchase', 
+                  y='Occupation', 
+                  orientation='h',
+                  title="Top 10 Occupations by Spending"
+                 )
     fig5.update_layout(yaxis={'categoryorder':'total ascending'})
     st.plotly_chart(fig5, use_container_width=True)
 
