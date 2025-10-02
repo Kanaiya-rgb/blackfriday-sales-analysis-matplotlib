@@ -1,74 +1,74 @@
-# Black Friday Sales Analysis Dashboard
+# Black Friday Sales Interactive Dashboard
 
-[![Python](https://img.shields.io/badge/Python-3.7+-blue.svg)](https://python.org)
-[![Matplotlib](https://img.shields.io/badge/Matplotlib-3.0+-orange.svg)](https://matplotlib.org)
-[![Pandas](https://img.shields.io/badge/Pandas-1.0+-green.svg)](https://pandas.pydata.org)
+[![Live App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://blackfriday-sales-analysis-matplotlib-vbvwrzohxz8fmfyz3dt3d8.streamlit.app/)
+[![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://python.org)
+[![Streamlit](https://img.shields.io/badge/Streamlit-1.0+-ff4b4b.svg)](https://streamlit.io)
+[![Plotly](https://img.shields.io/badge/Plotly-5.0+-9082f7.svg)](https://plotly.com)
+[![Pandas](https://img.shields.io/badge/Pandas-1.3+-green.svg)](https://pandas.pydata.org)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-A simple data visualization dashboard for Black Friday sales analysis using Python and Matplotlib.
+An interactive web dashboard for analyzing Black Friday sales data, built with Streamlit and Plotly. This project transforms a static Matplotlib analysis into a dynamic, user-friendly application.
+
+## 🚀 Live Demo
+
+You can access the live, interactive dashboard here:
+**[https://blackfriday-sales-analysis-matplotlib-vbvwrzohxz8fmfyz3dt3d8.streamlit.app/](https://blackfriday-sales-analysis-matplotlib-vbvwrzohxz8fmfyz3dt3d8.streamlit.app/)**
 
 ## 📋 Overview
 
-This project analyzes Black Friday retail data and creates a dashboard with 6 different charts to show business insights.
+This project analyzes a large Black Friday retail dataset and presents the findings in an interactive dashboard. Users can hover over charts to see detailed data points and gain business insights at a glance.
 
-## 📊 Features
+## ✨ Features
 
-The dashboard includes:
+The interactive dashboard includes:
 
-1. **Gender Distribution** - Bar chart showing male vs female shoppers
-2. **Age Group Analysis** - Pie chart with age group percentages
-3. **Purchase Amount Distribution** - Histogram showing spending patterns
-4. **Product Category Performance** - Scatter plot of average purchase by category
-5. **Top Occupations by Spending** - Horizontal bar chart of highest spending occupations
-6. **City Category Analysis** - Bar chart showing total purchases by city tier
+1.  **Gender Distribution**: Bar chart showing male vs female shoppers.
+2.  **Age Group Analysis**: Interactive pie chart with age group percentages.
+3.  **Purchase Amount Distribution**: Histogram with hover-able bins showing spending patterns.
+4.  **Product Category Performance**: Scatter plot of average purchase by category.
+5.  **Top Occupations by Spending**: Horizontal bar chart of the highest-spending occupations.
+6.  **City Category Analysis**: Bar chart showing total purchases by city tier.
 
-## 📁 Dataset
+## 🛠️ Technology Stack
 
-- **Source:** [Kaggle - Black Friday Sales Dataset](https://www.kaggle.com/datasets/rajeshrampure/black-friday-sale)
-- **File:** BlackFriday.csv
-- **Size:** ~550,000 records
-- **Columns:** 12 features (User_ID, Product_ID, Gender, Age, Occupation, City_Category, etc.)
+* **Python**: Core programming language.
+* **Streamlit**: For creating and deploying the web application.
+* **Plotly**: For generating interactive data visualizations.
+* **Pandas**: For data manipulation and analysis.
 
-## 🚀 Installation
+## ⚡ Running the App Locally
 
-```bash
-pip install pandas matplotlib numpy
-```
+To run this application on your own machine, follow these steps:
 
-## ⚡ Quick Start
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/Kanaiya-rgb/blackfriday-sales-analysis-matplotlib.git](https://github.com/Kanaiya-rgb/blackfriday-sales-analysis-matplotlib.git)
+    cd blackfriday-sales-analysis-matplotlib
+    ```
 
-1. **Clone the repository:**
-```bash
-git clone https://github.com/Kanaiya-rgb/blackfriday-sales-analysis-matplotlib.git
-cd blackfriday-sales-analysis-matplotlib
-```
+2.  **Install dependencies from `requirements.txt`:**
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-2. **Install dependencies:**
-```bash
-pip install pandas matplotlib numpy
-```
-
-3. **Download the dataset:**
-   - Download BlackFriday.csv from [Kaggle](https://www.kaggle.com/datasets/rajeshrampure/black-friday-sale)
-   - Place it in the project root directory
-
-4. **Run the analysis:**
-```bash
-python BlackFriday.ipynb
-```
-
-> **Note:** Despite the .ipynb extension, this is a Python script that can be run directly
+3.  **Run the Streamlit app:**
+    ```bash
+    streamlit run app.py
+    ```
+    The application will open in your web browser.
 
 ## 📂 Project Structure
 
 ```
 blackfriday-sales-analysis-matplotlib/
-├── BlackFriday.ipynb          # Main analysis script
-├── BlackFriday.csv            # Dataset (download from Kaggle)
-├── dashboard_blackfriday.png  # Generated dashboard image
-├── .gitignore
-├── LICENSE
-└── README.md
+├── .gitignore                 # Specifies files for Git to ignore
+├── BlackFriday.csv            # 📊 The dataset used for the analysis
+├── BlackFriday.ipynb          # 📓 The original Jupyter Notebook for Matplotlib analysis
+├── LICENSE                    # Project's MIT License
+├── README.md                  # 📄 Project documentation and information
+├── app.py                     # 🚀 The main Streamlit application script
+├── dashboard_blackfriday.png  # 🖼️ The static dashboard image generated by the original script
+└── requirements.txt           # 📦 A list of all required Python libraries
 ```
 
 ## 🖼️ Dashboard Output
@@ -78,50 +78,34 @@ The script generates a high-resolution dashboard image (dashboard_blackfriday.pn
 - **Layout:** 2 rows × 3 columns grid
 - **Format:** PNG with professional styling
 
-## 🔍 Preview
+## 🖼️ Previews
 
-![Black Friday Sales Dashboard](dashboard_blackfriday.png)
+This project showcases the evolution from a static Matplotlib visualization to a dynamic Streamlit web application.
 
+### Original Matplotlib Dashboard
+
+This is the static dashboard generated by the `BlackFriday.ipynb` script using Matplotlib.
+
+![Matplotlib Static Dashboard](dashboard_blackfriday.png)
+
+### Interactive Streamlit Dashboard
+
+This is a preview of the live, interactive dashboard deployed on Streamlit Cloud, featuring Plotly charts.
+
+![Streamlit Interactive Dashboard](streamlit_dashboard_preview.png)
 ## 💡 Key Insights
 
-The dashboard shows:
-- Customer demographics (gender, age, occupation)
-- Spending patterns and purchase behavior
-- Product category performance
-- Geographic distribution across city tiers
+The dashboard reveals:
+-   Key customer demographics (gender, age, occupation).
+-   Interactive views of spending patterns and purchase behavior.
+-   Product category performance and geographic distribution across city tiers.
 
-## 🔧 Code Features
+## 👤 Author
 
-- **Data Cleaning:** Automatic handling of missing values
-- **Professional Visualization:** High-quality plots with proper styling
-- **Export Functionality:** Saves dashboard as PNG image
-- **Customizable:** Easy to modify colors, styles, and dimensions
+This project was created and is maintained by **[Kanaiya-rgb](https://github.com/Kanaiya-rgb)**.
 
-## 🛠️ Customization
-
-You can easily modify the code to:
-- Change chart colors and styles
-- Adjust figure size and DPI
-- Add more analysis dimensions
-- Export in different formats (PDF, SVG, etc.)
-
-## 🤝 Contributing
-
-Contributions are welcome! Feel free to:
-- Add new visualization types
-- Improve chart styling
-- Add statistical analysis
-- Submit bug fixes
+Feel free to connect or check out my other projects!
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 📞 Contact
-
-- **Repository:** [GitHub Repository](https://github.com/Kanaiya-rgb/blackfriday-sales-analysis-matplotlib)
-- **Author:** Kanaiya-rgb
-
----
-
-**Note:** This project is for educational and analytical purposes. The dataset is used to demonstrate data analysis and visualization techniques using Python and Matplotlib.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
